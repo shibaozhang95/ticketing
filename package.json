@@ -16,5 +16,7 @@
   "bugs": {
     "url": "https://github.com/shibaozhang95/ticketing/issues"
   },
-  "homepage": "https://github.com/shibaozhang95/ticketing#readme"
+  "homepage": "https://github.com/shibaozhang95/ticketing#readme",
+  "dependencies": {
+  }
 }
