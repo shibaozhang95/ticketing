@@ -4,7 +4,7 @@ import {
   validateRequest,
   NotFoundError,
   requireAuth,
-  NotAuthorisedError
+  NotAuthorisedError, BadRequestError
 } from '@zsbtickets/common';
 import { Ticket } from '../models/ticket';
 import { natsWrapper } from '../nats-wrapper';
@@ -29,6 +29,10 @@ router.put('/api/tickets/:id',
 
     if (!ticket) {
       throw new NotFoundError();
+    }
+
+    if (ticket.orderId) {
+      throw new BadRequestError('Cannot edita reserved ticket');
     }
 
     if (ticket.userId !== req.currentUser!.id) {
