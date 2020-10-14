@@ -7,7 +7,7 @@ declare global {
     interface Global {
       signin(): string[];
     }
-  }
+  } 
 }
 
 jest.mock('../nats-wrapper');
@@ -16,11 +16,7 @@ let mongo: any;
 beforeAll(async () => {
   process.env.JWT_KEY = 'asdf';
   
-  mongo = new MongoMemoryServer({
-    binary: {
-      version: '4.2.6'
-    }
-  });
+  mongo = new MongoMemoryServer();
   const mongoUri = await mongo.getUri();
 
   await mongoose.connect(mongoUri, {
